@@ -1,4 +1,9 @@
 %----------------------------------------------------------
+%	Use XeLaTeX Typeset
+%----------------------------------------------------------
+
+
+%----------------------------------------------------------
 %	Packages and document configurations
 %----------------------------------------------------------
 
@@ -9,6 +14,7 @@
 \usepackage[hmargin=1.25cm,vmargin=1.25cm,twocolumn,columnsep=1.25cm]{geometry}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref, tabularx}
+
 % Used for icons
 \usepackage{fontawesome, pifont}
 
@@ -31,25 +37,19 @@
 % Overriding section command
 \let\oldsection\section
 \renewcommand\section[1]{%
-	\vspace{-0.5\baselineskip}
+	\vspace{0.75\baselineskip}
     \oldsection{\color{Brown}{#1}}%
 	\vspace{-0.5\baselineskip}
     \hrule height 0.75pt
     \vspace{0.75\baselineskip}
 }
 
-% Date, position name, company name
+% Position name, location/company, date
 \newcommand\position[3]{
-	{\raggedleft\textit{#1}\\[2.5pt]}%
-	{\large\textbf{#2}}\\[2.5pt]%
-	\textit{#3}\\[5pt]%
-}
-
-
-\newcommand\education[3]{
-	{\large\textbf{#1}}\\%
-	{\raggedright\textit{#2}}%
-	{\hspace*{\fill}{\textit{#3}}}\\[5pt]%
+	\vspace{\baselineskip}
+	{\large\textbf{#1}}\\[2.5pt]%
+	\textit{#2}%
+	\hspace*{\fill{\textit{#3}}}\\[5pt]%
 }
     
     
@@ -64,11 +64,11 @@
 	\begin{center}
 		\vskip-\lastskip
 		{\huge\textbf{Martynas Subonis}}\\
-		\vspace{0.25\baselineskip}
+		\vspace{0.5\baselineskip}
 		{\large\textit{
 			I enjoy creating impactful software. Interested in software engineering/data science opportunities in Z{\"u}rich.
 		}}
-		\vspace{0.25\baselineskip}
+		\vspace{0.5\baselineskip}
 	\end{center}]
 
 
@@ -83,7 +83,7 @@
 }
 
 \section{Work Experience}
-\position{2019 November -- 2022 September}{Full Stack Software Engineer}{True Wealth AG, Z{\"u}rich}
+\position{Full Stack Software Engineer}{True Wealth AG, Z{\"u}rich}{2019 11 -- 2022 09}
 Software engineer at a leading wealth management company in Switzerland. While working at True Wealth, I had responsibilities of:
 \begin{itemize}
 	\item{Leading the implementation of a trade-volume optimization pipeline for a new product stream. The optimization algorithm consisted of transforming
@@ -102,7 +102,7 @@ Software engineer at a leading wealth management company in Switzerland. While w
 \textbf{Tech-stack} included: Java, TypeScript, Python, React.js, Next.js, Docker, PostgreSQL, GCP, Git, Gradle, Cypress, Webpack.
 \vspace{0.75\baselineskip}
 
-\position{2018 July -- 2019 October}{Full Stack Software Engineer}{atfinity GmbH, Z{\"u}rich}
+\position{Full Stack Software Engineer}{atfinity GmbH, Z{\"u}rich}{2018 07 -- 2019 11}
 Software developer at a digital finance solutions company. Contributor to the main product - \textit{regfinity} compliance platform. Main responsibilities included:
 \begin{itemize}
 \setlength\itemsep{0pt}
@@ -115,22 +115,22 @@ Software developer at a digital finance solutions company. Contributor to the ma
 
 \textbf{Tech-stack} included: Python, JavaScript, React.js, Django, MySQL, Docker, Git, Gradle, Webpack, Redux.
 
-\vspace{0.75\baselineskip}
+\vspace{\baselineskip}
 
-\position{2015 July -- 2015 August}{Research Assistant}{Institute of Theoretical Physics and Astronomy -- Department of Nuclei Theory, Vilnius University, Vilnius}
+\position{Research Assistant}{Institute of Theoretical Physics and Astronomy, Vilnius University, Vilnius}{2015 07 -- 2015 08}
 Part of the project ``Subatomic particle physics at CERN CMS experiment''. Under the two-Higgs-doublet model (2HDM), created tools 
 for data analysis and visualization with a C++ modular scientific software framework ROOT.
 
 
 \section{Research Experience}
-\position{2016 -- 2017}{Bayesian Optimization For Likelihood-Free Inference}{School of Informatics, The University of Edinburgh, Edinburgh}
+\position{Bayesian Optimization For Likelihood-Free Inference}{School of Informatics, The University of Edinburgh, Edinburgh}{2016 -- 2017}
 Analyzed high-dimensional Bayesian optimization (BO) with Bayesian neural networks for likelihood-free inference (LFI). 
 Utilizing Python, created BO algorithm based on Bayesian neural networks for LFI, which outperformed standard Gaussian 
 processes in both accuracy and computational cost aspects.
 \vspace{0.75\baselineskip}
 
 
-\position{2015 -- 2016}{Representation of Molecular Charge Density}{Theoretical Physics Department, Faculty of Physics, Vilnius University, Vilnius}
+\position{Representation of Molecular Charge Density}{Theoretical Physics Department, Faculty of Physics, Vilnius University, Vilnius}{2015 -- 2016}
 Investigated the representation of molecular charge density by point charges using numerical optimization algorithms. Created 
 a continuous space optimization algorithm based on simulated annealing, for derivative-free optimization. Mainly MATLAB was 
 used. Analyzed the molecular distance at which the point charge approximation becomes invalid.
@@ -138,28 +138,29 @@ used. Analyzed the molecular distance at which the point charge approximation be
 \newpage
 \section{Education}
 
-\education{Master of Science in Data Science}{The University of Edinburgh, UK}{2016 -- 2017}
+\position{Master of Science in Data Science}{The University of Edinburgh, UK}{2016 -- 2017}
 \textbf{Distinction rank}. Focus on machine learning, data analysis, statistics and Bayesian optimization.
 
-\vspace{\baselineskip}
-
-\education{Bachelor of Science in Physics}{Vilnius University, Lithuania}{2012 -- 2016}
+\position{Bachelor of Science in Physics}{Vilnius University, Lithuania}{2012 -- 2016}
 \textbf{89\% overall grade}. Focus on mathematics and theoretical physics.
 
-\vspace{\baselineskip}
-
-\education{Exchange Studies}{Lund University, Sweden}{2015 -- 2016}
+\position{Exchange Studies}{Lund University, Sweden}{2015 -- 2016}
 Focus on mathematics, computational physics and machine learning.
 
 \section{Academic Awards}
-\begin{tabular}{ll}
-	\textbf{MSc Class Award: Distinction} & \textit{2017}\\
-	 Awarded for excellent academic performance\\
-	 during Master of Science studies.\\[5pt]
-	\textbf{The University of Edinburgh UK/EU} & \textit{2016}\\ 
-	\textbf{Master's Scholarship}\\
-	Awarded on the basis of academic merit.
-\end{tabular}
+
+\textbf{MSc Class Award: Distinction}
+\hspace*{\fill}
+\textit{2017}\\[-10pt]
+
+Awarded for excellent academic performance during\\ Master of Science studies.\\[-5pt]
+
+\textbf{The University of Edinburgh UK/EU}
+\hspace*{\fill}
+\textit{2016}\\
+\textbf{Master's Scholarship}\\[-10pt]
+
+Awarded on the basis of academic merit.
 
 
 \section{Technical Skills}
@@ -184,18 +185,16 @@ Scikit-learn, SciPy, PyTorch, Keras, TensorFlow
  
 {\large\textbf{TensorFlow in Practice}}\\
 \textit{
-	\href{https://www.deeplearning.ai/tensorflow-in-practice/}{TensorFlow specialization} by Andrew Ng
+	\href{https://www.deeplearning.ai/courses/tensorflow-developer-professional-certificate/}{Specialization} by Andrew Ng
 }\\[5pt]
 Best practices of using TensorFlow for computer vision, natural language processing,  sequence/time series problems.
 \vspace*{0.5\baselineskip}
 
 {\large\textbf{Deep Learning}}\\
 \textit{
-	\href{https://www.deeplearning.ai/deep-learning-specialization/}{Deep learning specialization} by Andrew Ng
+	\href{https://www.deeplearning.ai/courses/deep-learning-specialization/}{Specialization} by Andrew Ng
 }\\[5pt]
 Foundations of deep learning. Convolutional networks, RNNs, LSTM, Adam, dropout, batch norm., Xavier/He initialization etc.
-
-\vspace{4\baselineskip}
 
 \section{Communication skills}
 
