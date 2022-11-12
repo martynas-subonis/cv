@@ -3,27 +3,24 @@
 %----------------------------------------------------------
 
 
-\documentclass[fontsize=10pt]{scrartcl}
+\documentclass[fontsize=10pt]{article}
 
 
 \usepackage[hmargin=1.25cm,vmargin=1.25cm,twocolumn,columnsep=1.25cm]{geometry}
-\usepackage{
-	bookman,
-	fontawesome,
-	needspace,
-	hyperref,
-	pifont,
-	tabularx,
-	xcolor
-}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref, tabularx}
+% Used for icons
+\usepackage{fontawesome, pifont}
+
+% Fonts
+\usepackage{fontspec}
+\setsansfont{HelveticaNeue}
 
 \pagestyle{empty}
 \setcounter{secnumdepth}{-1}
 \setlength\parindent{0pt}
-\setkomafont{section}{\scshape\Large\mdseries}
-\setkomafont{disposition}{\color[HTML]{801010}}
-\definecolor{link}{HTML}{506060} % Hyperlinks
-\hypersetup{colorlinks,breaklinks,urlcolor=link,linkcolor=link}
+\hypersetup{colorlinks, breaklinks, urlcolor=NavyBlue, linkcolor=NavyBlue}
+
 
 
 %----------------------------------------------------------
@@ -33,20 +30,26 @@
 
 % Overriding section command
 \let\oldsection\section
-\renewcommand\section[2][]{%
-	\vspace{-5px}
-    \oldsection[#1]{#2}%
-    \newdimen\raising%
-    \raising=\dimexpr-0.7\baselineskip\relax%
-    \vskip\raising\hrule height 0.5pt\vskip-\raising
+\renewcommand\section[1]{%
+	\vspace{-0.5\baselineskip}
+    \oldsection{\color{Brown}{#1}}%
+	\vspace{-0.5\baselineskip}
+    \hrule height 0.75pt
+    \vspace{0.75\baselineskip}
 }
 
 % Date, position name, company name
 \newcommand\position[3]{
-	\vspace{5px}
-	{\raggedleft\textsc{#1}\\[2.5pt]}%
-	{\raggedright{\large \textbf{#2}}\\[2.5pt]%
-	\normalsize{\textit{#3}}\\[5pt]}%
+	{\raggedleft\textit{#1}\\[2.5pt]}%
+	{\large\textbf{#2}}\\[2.5pt]%
+	\textit{#3}\\[5pt]%
+}
+
+
+\newcommand\education[3]{
+	{\large\textbf{#1}}\\%
+	{\raggedright\textit{#2}}%
+	{\hspace*{\fill}{\textit{#3}}}\\[5pt]%
 }
     
     
@@ -60,161 +63,146 @@
 \twocolumn[
 	\begin{center}
 		\vskip-\lastskip
-		{\usekomafont{part} Martynas Subonis}\\
-		{\selectfont\large \textit{
+		{\huge\textbf{Martynas Subonis}}\\
+		\vspace{0.25\baselineskip}
+		{\large\textit{
 			I enjoy creating impactful software. Interested in software engineering/data science opportunities in Z{\"u}rich.
 		}}
+		\vspace{0.25\baselineskip}
 	\end{center}]
 
 
-
-\needspace{0.5\textheight}
 \newdimen\boxwidth
 \boxwidth=\dimexpr\linewidth-2\fboxsep\relax
 \colorbox[HTML]{F5DD9D}{
 	\begin{tabularx}{\boxwidth}{c|X}
 		\raisebox{-2pt}{\Large\ding{41}} & \href{mailto:martynas.subonis@gmail.com}{martynas.subonis@gmail.com}\smallskip\\
-		\faLinkedin                      & \href{https://www.linkedin.com/in/martynassubonis}{linkedin.com/in/martynassubonis}\smallskip \\
+		\faLinkedin                      		& \href{https://www.linkedin.com/in/martynassubonis}{linkedin.com/in/martynassubonis}\smallskip\\
 		\raisebox{-1pt}{\Large\ding{37}} & {+41792802648}\smallskip\\
 	\end{tabularx}
 }
 
-
 \section{Work Experience}
 \position{2019 November -- 2022 September}{Full Stack Software Engineer}{True Wealth AG, Z{\"u}rich}
-\normalsize{
-	Software engineer at a leading wealth management company in Switzerland. While working at True Wealth, I had responsibilities of:
-	\begin{itemize}
-		\item{Leading the implementation of a trade-volume optimization pipeline for a new product stream. The optimization algorithm consisted of transforming
-		            product regulations into mathematical constraints and expressing the business problem as a convex optimization problem. The overall pipeline 
-		            additionally included relational data modeling, data processing, and exposing new functionality via RESTful APIs.}
-		\item{Co-leading new portfolio risk model. Solely responsible for mathematical models, \\contributed to new RESTful APIs,
-		            risk database model, customer risk data migration, and frontend integration/redesign. Estimated impact -- improved portfolio 
-		            risk estimation and granularization for 10000+ customers.}
-		\item{Implementing client-data anonymization process. The pipeline would anonymize $\approx$400 GB of sensitive client data daily,
-		            providing risk-free production-like data for development/\\testing.}
-		\item{Co-leading website redesign. The redesign focused on performance, accessibility, and SEO. As a result, each page had
-		            100\% SEO and $\geq$ 93\% performance/accessibility scores on Lighthouse reports.}
-		\item{Integration of E2E tests into the CI pipeline and build-system optimizations.}
-	\end{itemize}
-}
+Software engineer at a leading wealth management company in Switzerland. While working at True Wealth, I had responsibilities of:
+\begin{itemize}
+	\item{Leading the implementation of a trade-volume optimization pipeline for a new product stream. The optimization algorithm consisted of transforming
+		    product regulations into mathematical constraints and expressing the business problem as a convex optimization problem. The overall pipeline 
+		    additionally included relational data modeling, data processing, and exposing new functionality via RESTful APIs.}
+	\item{Co-leading new portfolio risk model. Solely responsible for mathematical models, contributed to new RESTful APIs,
+		    risk database model, customer risk data migration, and frontend integration/redesign. Estimated impact -- improved portfolio 
+		    risk estimation and granularization for 10000+ customers.}
+	\item{Implementing client-data anonymization process. The pipeline would anonymize $\approx$ 400 GB of sensitive client data daily,
+		    providing risk-free production-like data for development/testing.}
+	\item{Co-leading website redesign. The redesign focused on performance, accessibility, and SEO. As a result, each page had
+		    100\% SEO and $\geq$ 93\% performance/ accessibility scores on Lighthouse reports.}
+	\item{Integration of E2E tests into the CI pipeline and build-system optimizations.}
+\end{itemize}
 
-\textbf{Tech-stack} included: \textsc{Java}, \textsc{TypeScript}, \textsc{Python}, \textsc{React.js}, \textsc{Next.js}, \textsc{Docker}, 
-\textsc{PostgreSQL}, \textsc{GCP}, \textsc{git}, \textsc{Gradle},  \textsc{Cypress}, \textsc{Webpack}.
+\textbf{Tech-stack} included: Java, TypeScript, Python, React.js, Next.js, Docker, PostgreSQL, GCP, Git, Gradle, Cypress, Webpack.
+\vspace{0.75\baselineskip}
 
 \position{2018 July -- 2019 October}{Full Stack Software Engineer}{atfinity GmbH, Z{\"u}rich}
-\normalsize{
-	Software developer at a digital finance solutions company. Contributor to the main product - \textit{regfinity} compliance platform. Main responsibilities included:
-	\begin{itemize}
-		\setlength\itemsep{0pt}
-		\item{Supporting the creation of software specifications and architectures.}
-		\item{Developing RESTful backend APIs of the platform.}
-		\item{Contributing to the development of a rule evaluation system.}
-		\item{Creating interactive user interfaces.}
-		\item{Defining quality assurance processes and conducting technical interviews.}
-	\end{itemize}
-}
+Software developer at a digital finance solutions company. Contributor to the main product - \textit{regfinity} compliance platform. Main responsibilities included:
+\begin{itemize}
+\setlength\itemsep{0pt}
+	\item{Supporting the creation of software specifications and architectures.}
+	\item{Developing RESTful backend APIs of the platform.}
+	\item{Contributing to the development of a rule evaluation system.}
+	\item{Creating interactive user interfaces.}
+	\item{Defining quality assurance processes and conducting technical interviews.}
+\end{itemize}
 
-\textbf{Tech-stack} included: \textsc{Python}, \textsc{JavaScript}, \textsc{React.js}, \textsc{Django}, \textsc{MySQL}, 
-\textsc{Docker}, \textsc{git}, \textsc{Gradle}, \textsc{Webpack}, \textsc{Redux}.
+\textbf{Tech-stack} included: Python, JavaScript, React.js, Django, MySQL, Docker, Git, Gradle, Webpack, Redux.
+
+\vspace{0.75\baselineskip}
 
 \position{2015 July -- 2015 August}{Research Assistant}{Institute of Theoretical Physics and Astronomy -- Department of Nuclei Theory, Vilnius University, Vilnius}
-\normalsize{
-	Part of the project ``Subatomic particle physics at CERN CMS experiment''. Under the two-Higgs-doublet model (2HDM), created tools 
-	for data analysis and visualization with a \textsc{C++} modular scientific software framework \textsc{ROOT}.
-}
+Part of the project ``Subatomic particle physics at CERN CMS experiment''. Under the two-Higgs-doublet model (2HDM), created tools 
+for data analysis and visualization with a C++ modular scientific software framework ROOT.
 
 
 \section{Research Experience}
 \position{2016 -- 2017}{Bayesian Optimization For Likelihood-Free Inference}{School of Informatics, The University of Edinburgh, Edinburgh}
-\normalsize{
-	Analyzed high-dimensional Bayesian optimization (BO) with \\ Bayesian neural networks for likelihood-free inference (LFI). 
-	Utilizing \textsc{Python}, created BO algorithm based on Bayesian neural networks for LFI, which outperformed standard Gaussian 
-	processes in both accuracy and computational cost aspects.
-}
+Analyzed high-dimensional Bayesian optimization (BO) with Bayesian neural networks for likelihood-free inference (LFI). 
+Utilizing Python, created BO algorithm based on Bayesian neural networks for LFI, which outperformed standard Gaussian 
+processes in both accuracy and computational cost aspects.
+\vspace{0.75\baselineskip}
 
 
 \position{2015 -- 2016}{Representation of Molecular Charge Density}{Theoretical Physics Department, Faculty of Physics, Vilnius University, Vilnius}
-\normalsize{
-	Investigated the representation of molecular charge density by point charges using numerical optimization algorithms. Created 
-	a continuous space optimization algorithm based on simulated annealing, for derivative-free optimization. Mainly \textsc{MATLAB} was 
-	used. Analyzed the molecular distance at which the point charge approximation becomes invalid.
-}
+Investigated the representation of molecular charge density by point charges using numerical optimization algorithms. Created 
+a continuous space optimization algorithm based on simulated annealing, for derivative-free optimization. Mainly MATLAB was 
+used. Analyzed the molecular distance at which the point charge approximation becomes invalid.
 
 \newpage
 \section{Education}
 
+\education{Master of Science in Data Science}{The University of Edinburgh, UK}{2016 -- 2017}
+\textbf{Distinction rank}. Focus on machine learning, data analysis, statistics and Bayesian optimization.
 
-\begin{tabular}{rl}
-	2016 -- 2017 & {\large\textsc{Master of Science}}\\
-	             & {\large\textbf{Data Science}}\\
-	             & Distinction\\
-	             & \textit{The University of Edinburgh, UK}\\
-	             & \small Focus on machine learning, data analysis\\
-	             & \small and Bayesian optimization.\\[5pt]
-	2012 -- 2016 & {\large\textsc{Bachelor of Science}}\\
-	             & {\large\textbf{Physics}}\\
-	             & Overall mark -- 89\%\\
-	             & \textit{Vilnius University, Lithuania}\\
-	             & \small Focus on math and theoretical physics.\\[5pt]
-	2015 -- 2016 & {\large\textsc{Exchange Studies}}\\
-	             & {\large\textbf{Physics}}\\
-	             & \textit{Lund University, Sweden}\\
-	             & \small Focus on math, computational physics\\
-	             & \small and machine learning.                        
-\end{tabular}
+\vspace{\baselineskip}
 
+\education{Bachelor of Science in Physics}{Vilnius University, Lithuania}{2012 -- 2016}
+\textbf{89\% overall grade}. Focus on mathematics and theoretical physics.
+
+\vspace{\baselineskip}
+
+\education{Exchange Studies}{Lund University, Sweden}{2015 -- 2016}
+Focus on mathematics, computational physics and machine learning.
 
 \section{Academic Awards}
-\begin{tabular}{rl}
-	2017 & \textbf{MSc Class Award: Distinction}\\
-	     & \textit{Awarded for excellent academic}\\
-	     & \textit{performance during Master of Science}\\
-	     & \textit{studies}.\\[5pt]
-	2016 & \textbf{The University of Edinburgh UK/EU}\\ 
-	     & \textbf{Master's Scholarship}\\
-	     & \textit{Awarded on the basis of academic merit.}
+\begin{tabular}{ll}
+	\textbf{MSc Class Award: Distinction} & \textit{2017}\\
+	 Awarded for excellent academic performance\\
+	 during Master of Science studies.\\[5pt]
+	\textbf{The University of Edinburgh UK/EU} & \textit{2016}\\ 
+	\textbf{Master's Scholarship}\\
+	Awarded on the basis of academic merit.
 \end{tabular}
 
 
 \section{Technical Skills}
-{\raggedright{\textbf{Programming Languages}}\\
+\textbf{Programming Languages}\\
 Python, TypeScript, Java, SQL, MATLAB
-\vspace{5px}
+\vspace{0.25\baselineskip}
 
-{\raggedright{\textbf{Web}}\\
+\textbf{Web}\\
 React.js, Next.js, HTML, CSS, Django, Flask, Express.js, Webpack, Tailwind
-\vspace{5px}
+\vspace{0.25\baselineskip}
 
-{\raggedright{\textbf{DevOps}}\\
-git, Docker, K8s, CI/CD, GitHub Actions, gradle, bash
-\vspace{5px}
+\textbf{DevOps}\\
+Git, Docker, K8s, CI/CD, GitHub Actions, Gradle, Bash
+\vspace{0.25\baselineskip}
 
-{\raggedright{\textbf{Machine Learning}}\\
-Scikit-learn, SciPy, Keras, TensorFlow, PyTorch
+\textbf{Machine Learning}\\
+Scikit-learn, SciPy, PyTorch, Keras, TensorFlow
 
 
 \section{Online Education}
  
  
- {\raggedright{\large \textbf{TensorFlow in Practice}}\\
-  \normalsize{\textit{TensorFlow Specialization by \href{https://www.deeplearning.ai/tensorflow-in-practice/}{Andrew Ng}
-		  (\href{https://www.deeplearning.ai/tensorflow-in-practice/}{deeplearning.ai})}}}\\[5pt]
-\normalsize{Best practices of using TensorFlow for computer vision, natural language processing,  sequence/time series problems.}
+{\large\textbf{TensorFlow in Practice}}\\
+\textit{
+	\href{https://www.deeplearning.ai/tensorflow-in-practice/}{TensorFlow specialization} by Andrew Ng
+}\\[5pt]
+Best practices of using TensorFlow for computer vision, natural language processing,  sequence/time series problems.
+\vspace*{0.5\baselineskip}
 
-{\raggedright{\large \textbf{Deep Learning}}\\
-	\normalsize{\textit{Deep Learning Specialization by \href{https://www.deeplearning.ai/deep-learning-specialization/}{Andrew Ng}\\
-			(\href{https://www.deeplearning.ai/deep-learning-specialization/}{deeplearning.ai})}}}\\[5pt]
-\normalsize{Foundations of Deep Learning. Convolutional networks, RNNs, LSTM, Adam, Dropout, BatchNorm, Xavier/He initialization etc.}
+{\large\textbf{Deep Learning}}\\
+\textit{
+	\href{https://www.deeplearning.ai/deep-learning-specialization/}{Deep learning specialization} by Andrew Ng
+}\\[5pt]
+Foundations of deep learning. Convolutional networks, RNNs, LSTM, Adam, dropout, batch norm., Xavier/He initialization etc.
 
-\vspace{40px}
+\vspace{4\baselineskip}
+
 \section{Communication skills}
 
 \begin{itemize}
 	\item Lithuanian - Native
 	\item English - C2
-	\item German - A1
-	\item Russian - A2
+	\item Russian - A1
 \end{itemize}
 
 
